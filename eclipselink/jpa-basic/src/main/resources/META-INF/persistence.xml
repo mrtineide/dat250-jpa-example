@@ -4,15 +4,32 @@
              version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
     <persistence-unit name="todos" transaction-type="RESOURCE_LOCAL">
         <class>no.hvl.dat250.jpa.basicexample.Todo</class>
+
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
-                      <!-- TODO Change the path in the value here! -->
-            <property name="javax.persistence.jdbc.url"
-                      value="jdbc:derby:C:\Source\testdb;create=true"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:derby:C:\Users\Martin\Documents\DAT250\db;create=true"/>
             <property name="javax.persistence.jdbc.user" value="test"/>
             <property name="javax.persistence.jdbc.password" value="test"/>
 
-            <property name="eclipselink.ddl-generation" value="create-tables"/>
+            <!-- property name="eclipselink.ddl-generation" value="create-tables"/ -->
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+        </properties>
+    </persistence-unit>
+    <!--
+    I made this
+    -->
+    <persistence-unit name="people" transaction-type="RESOURCE_LOCAL">
+
+        <class>no.hvl.dat250.jpa.basicexample.model.Family</class>
+        <class>no.hvl.dat250.jpa.basicexample.model.Person</class>
+        <class>no.hvl.dat250.jpa.basicexample.model.Job</class>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:derby:C:\Users\Martin\Documents\DAT250\db;create=true"/>
+            <property name="javax.persistence.jdbc.user" value="test"/>
+            <property name="javax.persistence.jdbc.password" value="test"/>
+
+            <!--property name="eclipselink.ddl-generation" value="create-tables"/-->
             <property name="eclipselink.ddl-generation.output-mode" value="database"/>
         </properties>
 
