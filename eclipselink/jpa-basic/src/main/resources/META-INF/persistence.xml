@@ -4,7 +4,6 @@
              version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
     <persistence-unit name="todos" transaction-type="RESOURCE_LOCAL">
         <class>no.hvl.dat250.jpa.basicexample.Todo</class>
-
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:derby:C:\Users\Martin\Documents\DAT250\db;create=true"/>
@@ -30,6 +29,27 @@
             <property name="javax.persistence.jdbc.password" value="test"/>
 
             <!--property name="eclipselink.ddl-generation" value="create-tables"/-->
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+        </properties>
+
+    </persistence-unit>
+
+    <!-- I also made this -->
+    <persistence-unit name="banking" transaction-type="RESOURCE_LOCAL">
+        <class>no.hvl.dat250.jpa.basicexample.banking.Address</class>
+        <class>no.hvl.dat250.jpa.basicexample.banking.CreditCard</class>
+        <class>no.hvl.dat250.jpa.basicexample.banking.Pincode</class>
+        <class>no.hvl.dat250.jpa.basicexample.banking.Person</class>
+        <class>no.hvl.dat250.jpa.basicexample.banking.Bank</class>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:derby:C:\Users\Martin\Documents\DAT250\db;create=true"/>
+            <property name="javax.persistence.jdbc.user" value="test"/>
+            <property name="javax.persistence.jdbc.password" value="test"/>
+
+            <!-- remove this under when run once -->
+            <property name="eclipselink.ddl-generation" value="create-tables"/>
             <property name="eclipselink.ddl-generation.output-mode" value="database"/>
         </properties>
 

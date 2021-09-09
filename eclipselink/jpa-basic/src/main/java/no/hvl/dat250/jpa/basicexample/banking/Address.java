@@ -7,15 +7,13 @@ import java.util.ArrayList;
 
 @Data
 @Entity
-public class Person {
+public class Address {
+    // Database fields
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String  id;
-    private String name;
-
+    private int id;
     @ManyToMany
-    private ArrayList<Address> address;
-
-    @OneToMany
-    private ArrayList<CreditCard> cc;
+    private ArrayList<Person> residents;
+    private int number;
+    private String street;
 }
