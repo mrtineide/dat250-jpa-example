@@ -1,16 +1,15 @@
 package no.hvl.dat250.jpa.basicexample.banking;
 
-import static org.junit.Assert.assertTrue;
+import org.junit.Before;
+import org.junit.Test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
 
 public class testOfBank{
 
@@ -34,12 +33,12 @@ public class testOfBank{
 
         // No, so lets create new entries
         if (createNewEntries) {
-            assertTrue(q.getResultList().size() == 0);
+            assertEquals(0, q.getResultList().size());
             // Create some instances
             // Make a bank
             Bank bank = new Bank();
-            // Person
-            Person max = new Person();
+            // Person2
+            Person2 person2 = new Person2();
             // Address
             Address personAddress = new Address();
             // Two CCs
@@ -48,7 +47,7 @@ public class testOfBank{
             // and a pincode
             Pincode pin = new Pincode();
             // And all the arrays needed to make a many relation
-            ArrayList<Person> residentsOnAddress = new ArrayList<>();
+            ArrayList<Person2> residentsOnAddress = new ArrayList<>();
             ArrayList<Address> listOfAdress = new ArrayList<>();
             ArrayList<CreditCard> maxsCCs = new ArrayList<>();
             ArrayList<CreditCard> bankCCs = new ArrayList<>();
@@ -75,9 +74,9 @@ public class testOfBank{
             card2.setBalance(1);
             card2.setLimit(2000);
             card2.setBank(bank);
-            // Person
+            // Person2
             // Add max name and such
-            max.setName("Max Mustermann");
+            person2.setName("Max Mustermann");
             // Bank
             bank.setName("Pengebank");
             // Address
@@ -86,29 +85,39 @@ public class testOfBank{
 
 
             // Add in arrays
-            residentsOnAddress.add(max);
+            residentsOnAddress.add(person2);
+            personAddress.setResidents(residentsOnAddress);
+            em.persist(personAddress);
+
+
             listOfAdress.add(personAddress);
+            person2.setAddress(listOfAdress);
+            em.persist(person2);
+
+
             bankCCs.add(card1);
             bankCCs.add(card2);
+
+
             maxsCCs.add(card1);
             maxsCCs.add(card2);
 
 
             // Set the arrays in the objects
             // Add creditcards
-            max.setCc(maxsCCs);
+            person2.setCc(maxsCCs);
             bank.setCcs(bankCCs);
             // Add residents to address
-            personAddress.setResidents(residentsOnAddress);
+
             // Add address to Max
-            max.setAddress(listOfAdress);
+
 
             // Persist the all
             em.persist(bank);
-            em.persist(max);
+
             em.persist(card1);
             em.persist(card2);
-            em.persist(personAddress);
+
 
         }
 
@@ -133,7 +142,7 @@ public class testOfBank{
         Query q = em.createQuery("select m from Bank m");
 
         // We should have 40 Persons in the database
-        assertTrue(q.getResultList().size() == 1);
+        assertEquals(1, q.getResultList().size());
 
         em.close();
     }

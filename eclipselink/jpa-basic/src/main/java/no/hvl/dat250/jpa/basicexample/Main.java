@@ -22,7 +22,7 @@ public class Main {
         }
         System.out.println("Size: " + todoList.size());
 
-        // create new todo
+        // create new elemt in todolist
         em.getTransaction().begin();
         Todo todo = new Todo();
         todo.setSummary("This is a test");

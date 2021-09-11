@@ -7,13 +7,14 @@ import java.util.ArrayList;
 
 @Data
 @Entity
-public class Person {
+public class Person2 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String  id;
+
     private String name;
 
-    @ManyToMany
+    @OneToMany(mappedBy = "id")
     private ArrayList<Address> address;
 
     @OneToMany

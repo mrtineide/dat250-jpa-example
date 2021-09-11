@@ -12,8 +12,10 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     @ManyToMany
-    private ArrayList<Person> residents;
+    private ArrayList<Person2> residents;
+
     private int number;
     private String street;
 }

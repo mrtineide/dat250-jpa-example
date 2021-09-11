@@ -39,7 +39,7 @@
         <class>no.hvl.dat250.jpa.basicexample.banking.Address</class>
         <class>no.hvl.dat250.jpa.basicexample.banking.CreditCard</class>
         <class>no.hvl.dat250.jpa.basicexample.banking.Pincode</class>
-        <class>no.hvl.dat250.jpa.basicexample.banking.Person</class>
+        <class>no.hvl.dat250.jpa.basicexample.banking.Person2</class>
         <class>no.hvl.dat250.jpa.basicexample.banking.Bank</class>
 
         <properties>
@@ -49,7 +49,7 @@
             <property name="javax.persistence.jdbc.password" value="test"/>
 
             <!-- remove this under when run once -->
-            <property name="eclipselink.ddl-generation" value="create-tables"/>
+            <!--property name="eclipselink.ddl-generation" value="create-tables"/-->
             <property name="eclipselink.ddl-generation.output-mode" value="database"/>
         </properties>
 
