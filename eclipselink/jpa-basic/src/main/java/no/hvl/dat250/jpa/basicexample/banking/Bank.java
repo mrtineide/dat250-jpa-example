@@ -3,6 +3,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -11,7 +12,7 @@ public class Bank {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @OneToMany
-    private ArrayList<CreditCard> ccs;
+    private List<CreditCard> ccs;
 
     private String name;
 

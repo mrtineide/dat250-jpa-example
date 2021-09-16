@@ -4,19 +4,20 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
-public class Person2 {
+public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String  id;
 
     private String name;
 
-    @OneToMany(mappedBy = "id")
-    private ArrayList<Address> address;
+    @ManyToMany(mappedBy = "residents")
+    private List<Address> address;
 
     @OneToMany
-    private ArrayList<CreditCard> cc;
+    private List<CreditCard> cc;
 }

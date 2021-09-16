@@ -38,7 +38,7 @@ public class testOfBank{
             // Make a bank
             Bank bank = new Bank();
             // Person2
-            Person2 person2 = new Person2();
+            Person person = new Person();
             // Address
             Address personAddress = new Address();
             // Two CCs
@@ -47,7 +47,7 @@ public class testOfBank{
             // and a pincode
             Pincode pin = new Pincode();
             // And all the arrays needed to make a many relation
-            ArrayList<Person2> residentsOnAddress = new ArrayList<>();
+            ArrayList<Person> residentsOnAddress = new ArrayList<>();
             ArrayList<Address> listOfAdress = new ArrayList<>();
             ArrayList<CreditCard> maxsCCs = new ArrayList<>();
             ArrayList<CreditCard> bankCCs = new ArrayList<>();
@@ -76,7 +76,7 @@ public class testOfBank{
             card2.setBank(bank);
             // Person2
             // Add max name and such
-            person2.setName("Max Mustermann");
+            person.setName("Max Mustermann");
             // Bank
             bank.setName("Pengebank");
             // Address
@@ -85,14 +85,14 @@ public class testOfBank{
 
 
             // Add in arrays
-            residentsOnAddress.add(person2);
+            residentsOnAddress.add(person);
             personAddress.setResidents(residentsOnAddress);
             em.persist(personAddress);
 
 
             listOfAdress.add(personAddress);
-            person2.setAddress(listOfAdress);
-            em.persist(person2);
+            person.setAddress(listOfAdress);
+            em.persist(person);
 
 
             bankCCs.add(card1);
@@ -105,7 +105,7 @@ public class testOfBank{
 
             // Set the arrays in the objects
             // Add creditcards
-            person2.setCc(maxsCCs);
+            person.setCc(maxsCCs);
             bank.setCcs(bankCCs);
             // Add residents to address
 
